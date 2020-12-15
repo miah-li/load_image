@@ -55,7 +55,7 @@ done
 while [ ! -n "$id" ]
 do
 	get_id
-	for(( i=1; i<=5 ; i++ ))
+	for(( i=1; i<=50 ; i++ ))
 	do
 
 		get_name
