@@ -10,9 +10,9 @@ function load_image_ubuntu() {
 
 function get_id(){
 	artifacts=`curl \
-				-H "Accept: application/vnd.github.v3+json" \
-				-u miah-li:cd36e32be5004cb216baa1c8b4accf890ce82a14 \
-				https://api.github.com/repos/khadas/fenix/actions/artifacts `
+		-H "Accept: application/vnd.github.v3+json" \
+		-u miah-li:cd36e32be5004cb216baa1c8b4accf890ce82a14 \
+		https://api.github.com/repos/khadas/fenix/actions/artifacts `
 	a=`echo $artifacts | jq '.artifacts'`
 	echo $a | jq ' .[] | { id , name } ' > jason1.txt
 	a_id=`cat jason1.txt | awk -F"," '{ print $1 }' | sed -n '2p' `			
