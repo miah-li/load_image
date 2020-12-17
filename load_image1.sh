@@ -48,10 +48,11 @@ do
 	for(( i=1; i<=50 ; i++ ))
 	do
 		get_name
-		load_image_ubuntu
-		id=$((id-1))
-		echo $id
-		if [ "$name" == "null" ]; then
+		if [ "$name" != "null" ]; then
+			load_image_ubuntu
+			id=$((id-1))
+			echo $id
+		else
 			break
 		fi
 	done
