@@ -3,7 +3,7 @@ id=$1
 function load_image_ubuntu() {      
 	curl -L -v \
 		-H "Accept: application/vnd.github.v3+json" \
-		-u miah-li:5a4ead30625690b05a9747583bfc579106074eb0 \
+		-u miah-li:54bfe8c0f08c3f25237e8e132299c19e9f432b6b  \
 		-o $name.zip \
  		https://api.github.com/repos/khadas/fenix/actions/artifacts/$id/zip
  }
@@ -11,7 +11,7 @@ function load_image_ubuntu() {
 function get_id(){
 	artifacts=`curl \
 		-H "Accept: application/vnd.github.v3+json" \
-		-u miah-li:5a4ead30625690b05a9747583bfc579106074eb0 \
+		-u miah-li:54bfe8c0f08c3f25237e8e132299c19e9f432b6b  \
 		https://api.github.com/repos/khadas/fenix/actions/artifacts `
 	a=`echo $artifacts | jq '.artifacts'`
 	echo $a | jq ' .[] | { id , name } ' > jason1.txt
@@ -23,7 +23,7 @@ function get_id(){
 function get_name(){
 	curl \
 		-H "Accept: application/vnd.github.v3+json" \
-		-u miah-li:5a4ead30625690b05a9747583bfc579106074eb0 \
+		-u miah-li:54bfe8c0f08c3f25237e8e132299c19e9f432b6b  \
 		https://api.github.com/repos/khadas/fenix/actions/artifacts/$id > jason2.txt
 	name=` cat jason2.txt | jq .name | sed 's/\"//g' `
 	echo $name
@@ -33,7 +33,7 @@ while [ -n "$id" ]
 do
 	curl \
 		-H "Accept: application/vnd.github.v3+json" \
-		-u miah-li:5a4ead30625690b05a9747583bfc579106074eb0 \
+		-u miah-li:54bfe8c0f08c3f25237e8e132299c19e9f432b6b  \
 		https://api.github.com/repos/khadas/fenix/actions/artifacts/$id > jason.txt
 	id=` cat jason.txt | jq .id `
 	name=` cat jason.txt | jq .name | sed 's/\"//g' `	 
